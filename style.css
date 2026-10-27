@@ -1,0 +1,196 @@
+/* ===== GLOBAL RESET ===== */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #6c3ce9;
+    --primary-dark: #5125c5;
+    --background: #f5f6fc;
+    --card-background: #ffffff;
+    --text: #202033;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--background);
+    padding: 40px 6%;
+    min-height: 100vh;
+}
+
+/* ===== PAGE HEADING ===== */
+h1 {
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 35px;
+    color: var(--text);
+    letter-spacing: -1px;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    width: 75px;
+    height: 5px;
+    background: var(--primary);
+    border-radius: 10px;
+    margin: 12px auto 0;
+}
+
+/* ===== PRODUCT GRID ===== */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+/* ===== PRODUCT CARD ===== */
+.product {
+    background: var(--card-background);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+    box-shadow: 0 5px 18px rgba(30, 25, 70, 0.05);
+    transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.product:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(60, 40, 120, 0.12);
+    border-color: #d4c5ff;
+}
+
+/* ===== PRODUCT TITLE ===== */
+.product .title {
+    font-size: 1.4rem;
+    line-height: 1.3;
+    font-weight: 700;
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+/* ===== PRODUCT DESCRIPTION ===== */
+.product .description {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* ===== CPU AND GRAPHICS CARD ===== */
+.product .cpu,
+.product .graphics_card {
+    font-size: 0.9rem;
+    color: #4b5563;
+    overflow-wrap: anywhere;
+}
+
+/* ===== PRODUCT PRICE ===== */
+.product .price {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+/* ===== BUY BUTTON ===== */
+.product .buy_button {
+    width: 100%;
+    padding: 13px 16px;
+    margin-top: 5px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 250ms ease, transform 250ms ease;
+}
+
+.product .buy_button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.product .buy_button:active {
+    transform: scale(0.98);
+}
+
+.product .buy_button:focus-visible {
+    outline: 3px solid #b9a4ff;
+    outline-offset: 3px;
+}
+
+/* ===== EMPTY PRODUCT MESSAGE ===== */
+.products > p {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 35px;
+    color: var(--muted);
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+/* ===== TABLETS ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 30px 5%;
+    }
+
+    .products {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+    }
+
+    .product {
+        padding: 20px;
+    }
+}
+
+/* ===== MOBILE PHONES ===== */
+@media (max-width: 480px) {
+    body {
+        padding: 25px 16px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+        margin-bottom: 25px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .product {
+        padding: 22px;
+    }
+
+    .product .title {
+        font-size: 1.25rem;
+    }
+
+    .product .price {
+        font-size: 1.6rem;
+    }
+}
